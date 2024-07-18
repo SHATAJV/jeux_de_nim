@@ -4,11 +4,11 @@
 """
 Jeux de Nim ( Marienbad)
 """
-def play(player1, player2, current_player):
-    pile = [1,3,5,7]
+def play_marienbad(player1, player2, current_player):
+    piles = [1, 3, 5, 7]
 
-    while sum(pile) > 0:
-        print(f"\nThere are {pile} matches left.")
+    while sum(piles) > 0:
+        print(f"\nCurrent piles: {piles}")
         if current_player == player1:
             print(f"It's your turn, {player1}")
         else:
@@ -16,20 +16,29 @@ def play(player1, player2, current_player):
 
         while True:
             try:
-                choice = int(input("How many matches do you want to take (1-3)? "))
-                if 1 <= choice <= 4 and choice <= pile:
+                pile_index = int(input(f"{current_player}, from which pile do you want to take (0-3)? "))
+                if 0 <= pile_index < len(piles) and piles[pile_index] > 0:
                     break
                 else:
-                    print("Invalid choice. Please enter a number between 1 and 4 and not more than the remaining matches.")
+                    print("Invalid pile choice. Try again.")
             except ValueError:
                 print("Invalid input. Please enter a number.")
 
-        pile[] -= choice
-        if pile == 0:
+        while True:
+            try:
+                choice = int(input(f"How many matches do you want to take from pile {pile_index} (1-{piles[pile_index]})? "))
+                if 1 <= choice <= piles[pile_index]:
+                    break
+                else:
+                    print("Invalid number of matches. Try again.")
+            except ValueError:
+                print("Invalid input. Please enter a number.")
+
+        piles[pile_index] -= choice
+        if sum(piles) == 0:
             print(f"{current_player} took the last match and lost!")
             return
 
-        # Switch current player
         current_player = player2 if current_player == player1 else player1
 
 def main():
@@ -39,8 +48,9 @@ def main():
 
 
 
-    play(player1, player2, current_player)
+    play_marienbad(player1, player2, current_player)
 
 if __name__ == "__main__":
     main()
+
 
