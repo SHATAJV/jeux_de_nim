@@ -42,8 +42,9 @@ def main():
     if current_player not in [user, "Computer"]:
         print("Invalid name for the starting player. Please restart the program and enter a valid name.")
         return
+    play(user, current_player)
 
-   
+
 
 if __name__ == "__main__":
     main()
