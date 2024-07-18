@@ -2,39 +2,46 @@
 # -*- coding: utf-8 -*-
 
 """
-Jeux de Nim (variante simple et de Marienbad)
-
+Jeux de Nim (simple variant and Marienbad)
 """
 
-def play(player1, player2,current_player):
-
+def play(player1, player2, current_player):
     pile = 21
-    if current_player==player1:
-      print(f"it's your turn{player1}")
-    else:
-        print(f"it's your turn {player2}")
-    while True :
-         print(f"there is {pile} piles")
-         choice= input((f"Enter How many piles you want to take(1_4):"))
-         try:
-             if 1<choice<=4  and choice<=pile :
 
-                break
-             else:
-                 print("you didn't enter right choice please right again")
-         except ValueError:
-             print(f"Error ! try again")
-    pile -= choice
-    if pile==0:
-        print(f"You Loose {current_player}!")
+    while pile > 0:
+        print(f"\nThere are {pile} matches left.")
+        if current_player == player1:
+            print(f"It's your turn, {player1}")
+        else:
+            print(f"It's your turn, {player2}")
 
+        while True:
+            try:
+                choice = int(input("How many matches do you want to take (1-4)? "))
+                if 1 <= choice <= 4 and choice <= pile:
+                    break
+                else:
+                    print("Invalid choice. Please enter a number between 1 and 4 and not more than the remaining matches.")
+            except ValueError:
+                print("Invalid input. Please enter a number.")
+
+        pile -= choice
+        if pile == 0:
+            print(f"{current_player} took the last match and lost!")
+            return
+
+        # Switch current player
+        current_player = player2 if current_player == player1 else player1
 
 def main():
-    player1 = input("Enter Your name: ")
-    player2 = input("Enter Your name: ")
-    current_player = input("who want to start game(enter the name): ").strip().lower()
-    winner= play(player1, player2,current_player)
-    print(winner)
+    player1 = input("Enter the name of player 1: ")
+    player2 = input("Enter the name of player 2: ")
+    current_player = input("Who wants to start the game? (enter the name): ").strip()
+
+    
+
+    play(player1, player2, current_player)
 
 if __name__ == "__main__":
     main()
+
