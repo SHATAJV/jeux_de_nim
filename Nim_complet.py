@@ -21,7 +21,11 @@ def main():
     Main function to start the Nim game based on the selected game type.
     """
     print("Welcome to Nim Games")
-    
+    print("Game Types: ")
+    print("**2players**: Play against another human player.")
+    print("**1player**: Play against the computer.")
+    print("**Marienband**: Play the Marienbad variant with multiple piles.")
+
 
     valid_game_types = ["2players", "1player", "Marienband"]
 
