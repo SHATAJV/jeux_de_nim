@@ -3,7 +3,14 @@
 # -*- coding: utf-8 -*-
 
 """
-Nim Game (Complete)
+Nim Game (Complete) This script implements three versions of the Nim game:
+ 1. **Two-Player Nim**: A game where two players take turns removing matches from a single pile. The player who takes the last match loses.
+ 2. **Single-Player Nim**: A game where a player competes against the computer. The rules are similar to the two-player game, but the computer takes turns making moves as well. The player who takes the last match loses.
+  3. **Marienbad**: A variant of Nim played with multiple piles. Players take turns removing matches from one pile.
+   The player who takes the last match loses.
+    Game Types: - **2players**: Play against another human player.
+     **1player**: Play against the computer.
+      **Marienband**: Play the Marienbad variant with multiple piles.
 """
 
 import random
@@ -14,6 +21,7 @@ def main():
     Main function to start the Nim game based on the selected game type.
     """
     print("Welcome to Nim Games")
+    
 
     valid_game_types = ["2players", "1player", "Marienband"]
 
