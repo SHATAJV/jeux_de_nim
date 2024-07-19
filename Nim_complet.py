@@ -1,23 +1,45 @@
 #!/usr/bin/env python
+
 # -*- coding: utf-8 -*-
 
 """
-Jeux de Nim ( Compelet)
+Nim Game (Complete)
 """
+
 import random
+
+
 def main():
-    print(f"Welcome to Nim Games")
-    type_gmame= input("Enter de type de game witch you want play(2players, 1player, Marienband:").strip()
-    if type_gmame== "2players":
+    """
+    Main function to start the Nim game based on the selected game type.
+    """
+    print("Welcome to Nim Games")
+
+    valid_game_types = ["2players", "1player", "Marienband"]
+
+    while True:
+        type_game = input("Enter the type of game you want to play (2players, 1player, Marienband): ").strip()
+        if type_game in valid_game_types:
+            break
+        else:
+            print("Invalid game type. Please enter a valid game type.")
+
+    if type_game == "2players":
+
         def play_2players(player1, player2, current_player):
+            """
+            Play the 2-player version of the Nim game.
+
+            Args:
+                player1 (str): Name of player 1.
+                player2 (str): Name of player 2.
+                current_player (str): Name of the current player.
+            """
             pile = 21
 
             while pile > 0:
                 print(f"\nThere are {pile} matches left.")
-                if current_player == player1:
-                    print(f"It's your turn, {player1}")
-                else:
-                    print(f"It's your turn, {player2}")
+                print(f"It's your turn, {current_player}")
 
                 while True:
                     try:
@@ -39,13 +61,27 @@ def main():
                 current_player = player2 if current_player == player1 else player1
 
         def main_2player():
+            """
+            Initialize and start the 2-player version of the Nim game.
+            """
             player1 = input("Enter the name of player 1: ")
             player2 = input("Enter the name of player 2: ")
             current_player = input("Who wants to start the game? (enter the name): ").strip()
 
             play_2players(player1, player2, current_player)
-    elif type_gmame== "1player":
+
+        main_2player()
+
+    elif type_game == "1player":
+
         def play_1player(user, current_player):
+            """
+            Play the 1-player version of the Nim game against the computer.
+
+            Args:
+                user (str): Name of the user.
+                current_player (str): Name of the current player (user or Computer).
+            """
             pile = 21
 
             while pile > 0:
@@ -76,29 +112,39 @@ def main():
                     return
 
                 # Switch current player
-                if current_player == user:
-                    current_player = "Computer"
-                else:
-                    current_player = user
+                current_player = "Computer" if current_player == user else user
 
         def main_1player():
+            """
+            Initialize and start the 1-player version of the Nim game.
+            """
             user = input("Enter the name of the player: ")
             current_player = input("Who wants to start the game? (enter the name or 'Computer'): ").strip()
 
             if current_player not in [user, "Computer"]:
                 print("Invalid name for the starting player. Please restart the program and enter a valid name.")
                 return
-              play_1player(user, current_player)
-    else:
+
+            play_1player(user, current_player)
+
+        main_1player()
+
+    elif type_game == "Marienband":
+
         def play_marienbad(player1, player2, current_player):
+            """
+            Play the Marienbad version of the Nim game.
+
+            Args:
+                player1 (str): Name of player 1.
+                player2 (str): Name of player 2.
+                current_player (str): Name of the current player.
+            """
             piles = [1, 3, 5, 7]
 
             while sum(piles) > 0:
                 print(f"\nCurrent piles: {piles}")
-                if current_player == player1:
-                    print(f"It's your turn, {player1}")
-                else:
-                    print(f"It's your turn, {player2}")
+                print(f"It's your turn, {current_player}")
 
                 while True:
                     try:
@@ -126,13 +172,21 @@ def main():
                     print(f"{current_player} took the last match and lost!")
                     return
 
+                # Switch current player
                 current_player = player2 if current_player == player1 else player1
 
-        def main_Marienband():
+        def main_marienbad():
+            """
+            Initialize and start the Marienbad version of the Nim game.
+            """
             player1 = input("Enter the name of player 1: ")
             player2 = input("Enter the name of player 2: ")
             current_player = input("Who wants to start the game? (enter the name): ").strip()
 
             play_marienbad(player1, player2, current_player)
+
+        main_marienbad()
+
+
 if __name__ == "__main__":
     main()
