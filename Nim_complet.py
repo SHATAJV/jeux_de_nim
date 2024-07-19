@@ -74,7 +74,7 @@ def main():
 
         def main_2player():
             """
-            Initialize and start the 2-player version of the Nim game.
+             start the 2-player version of the Nim game.
             """
             player1 = input("Enter the name of player 1: ")
             player2 = input("Enter the name of player 2: ")
@@ -128,7 +128,7 @@ def main():
 
         def main_1player():
             """
-            Initialize and start the 1-player version of the Nim game.
+             start the 1-player version of the Nim game.
             """
             user = input("Enter the name of the player: ")
             current_player = input("Who wants to start the game? (enter the name or 'Computer'): ").strip()
@@ -189,7 +189,7 @@ def main():
 
         def main_marienbad():
             """
-            Initialize and start the Marienbad version of the Nim game.
+             start the Marienbad version of the Nim game.
             """
             player1 = input("Enter the name of player 1: ")
             player2 = input("Enter the name of player 2: ")
